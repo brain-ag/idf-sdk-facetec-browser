@@ -198,9 +198,13 @@ export declare var FaceTecSDK: {
     **/
     FaceTecAuditTrailImagesToReturn: typeof FaceTecAuditTrailImagesToReturn;
     /**
+      * @deprecated - This API method is deprecated and will be removed in an upcoming release of the Browser SDK. Use the deinitialize method instead.
+    */
+    unload: (callback: () => void) => void;
+    /**
       * Unload FaceTecSDK and all its resources.
     **/
-    unload: (callback: () => void) => void;
+    deinitialize: (callback: () => void) => void;
     /**
     *   Developer API to set logging mode to enumerated FaceTecLoggingMode.
     *   Default       - Log all important messages to the console.
