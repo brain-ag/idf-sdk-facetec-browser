@@ -1,3 +1,6 @@
+## [3.2.7]
+- Melhoria: Timeout de carregamento
+
 ## [3.2.6]
 - Melhoria: Atualização do componente FaceTec com correções de vulnerabilidade
 
