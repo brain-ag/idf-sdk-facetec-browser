@@ -1,3 +1,6 @@
+## [3.3.0]
+- Melhoria: Orientação por voz 
+
 ## [3.2.8]
 - Melhoria: Atualização do componente FaceTec
 
