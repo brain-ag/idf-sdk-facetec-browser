@@ -1,3 +1,9 @@
+## [3.3.1]
+- Melhoria: Melhorias no audio e guia vocal
+- Correção: Parametrização de timeout
+
+Versão Facetec SDK: 9.6.90
+
 ## [3.3.0]
 - Melhoria: Orientação por voz 
 
