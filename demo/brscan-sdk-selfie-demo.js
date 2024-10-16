@@ -1,10 +1,10 @@
 function iniciaSelfie() {
-  let selfie = new window.BrScanSDKSelfie.Selfie('CHAVE SDK');
+  let selfie = new window.BrScanSDKSelfie.Selfie('')
 
   console.log(`Versão do SDK Facetec: ${selfie.versaoSdkFacetec}`)
 
   // audio
-  selfie.vocalGuidanceEnabled = true
+  // selfie.vocalGuidanceEnabled = true
 
   // Wizzard
   // selfie.wizzard = true;
@@ -67,11 +67,6 @@ function iniciaSelfie() {
 
   // Timeout de conexão lenta
   // selfie.conexaoTimeout = 1;
-
-  // Callback Opcional
-  selfie.iniciaSelfie(document.getElementById('selfie'), (callback) => {
-    console.log('callback', callback)
-  })
 
   selfie.iniciaSelfie(document.getElementById('selfie'))
     .then(selfie => {
