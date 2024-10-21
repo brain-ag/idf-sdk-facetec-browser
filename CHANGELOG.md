@@ -1,3 +1,6 @@
+## [3.4.1]
+- Correção: Caracteres invalidos
+
 ## [3.4.0]
 - Melhoria: Atualização Facetec: 9.7.31
 
