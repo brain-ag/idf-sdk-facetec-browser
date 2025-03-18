@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurações</title>
+  <script src="js/config.js"></script>
+  <script>
+    function saveConfigForm() {
+      const fileInput = document.getElementById('imageUpload');
+      console.log(fileInput.files)
+
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+
+      reader.onloadend = function () {
+        const config = {
+          imageBase64: reader.result,
+          wizard: document.getElementById('wizard').checked,
+          botaoCancelar: document.getElementById('botaoCancelar').checked,
+          backgroundColor: document.getElementById('backgroundColor').value,
+          wizardCorPrimary: document.getElementById('wizardCorPrimary').value,
+          wizardCorTextCorpo: document.getElementById('wizardCorTextCorpo').value,
+          wizardCorTextTitle: document.getElementById('wizardCorTextTitle').value,
+          wizardCorTextButton: document.getElementById('wizardCorTextButton').value,
+          wizardButtonRadius: document.getElementById('wizardButtonRadius').value,
+          btnNormalColor: document.getElementById('btnNormalColor').value,
+          loadingTextColor: document.getElementById('loadingTextColor').value,
+          btnHighlightColor: document.getElementById('btnHighlightColor').value,
+          btnDisabledColor: document.getElementById('btnDisabledColor').value,
+          btnBorderColor: document.getElementById('btnBorderColor').value,
+          btnBorderWidth: document.getElementById('btnBorderWidth').value,
+          btnBorderRadius: document.getElementById('btnBorderRadius').value,
+          ovalStrokeColor: document.getElementById('ovalStrokeColor').value,
+          ovalProgressColor1: document.getElementById('ovalProgressColor1').value,
+          ovalProgressColor2: document.getElementById('ovalProgressColor2').value,
+          resultAnimationSuccessBackgroundColor: document.getElementById('resultAnimationSuccessBackgroundColor').value,
+          resultAnimationSuccessForegroundColor: document.getElementById('resultAnimationSuccessForegroundColor').value,
+          successBackgroundColor: document.getElementById('successBackgroundColor').value,
+          retryScreenHeaderTextColor: document.getElementById('retryScreenHeaderTextColor').value,
+          retryScreenSubtextTextColor: document.getElementById('retryScreenSubtextTextColor').value,
+          retryScreenImageBorderWidth: document.getElementById('retryScreenImageBorderWidth').value,
+          feedbackCustomizationBackgroundColor: document.getElementById('feedbackCustomizationBackgroundColor').value,
+          feedbackCustomizationTextColor: document.getElementById('feedbackCustomizationTextColor').value,
+          feedbackCustomizationCornerRadius: document.getElementById('feedbackCustomizationCornerRadius').value,
+          feedbackCustomizationShadow: document.getElementById('feedbackCustomizationShadow').value,
+          resultAnimationSuccessBackgroundImage: document.getElementById('resultAnimationSuccessBackgroundImage').value,
+          loadingBackgroundColor: document.getElementById('loadingBackgroundColor').value,
+          uploadProgressFillColor: document.getElementById('uploadProgressFillColor').value,
+          conexaoTimeout: document.getElementById('conexaoTimeout').value,
+          readyScreenHeaderTextColor: document.getElementById('readyScreenHeaderTextColor').value,
+          readyScreenSubtextColor: document.getElementById('readyScreenSubtextColor').value,
+        };
+        saveConfig(config);
+
+        alert('Configurações salvas!');
+        window.location.href = 'index.html'; // Redireciona para index.html
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        const config = {
+          imageBase64: '',
+          wizard: document.getElementById('wizard').checked,
+          botaoCancelar: document.getElementById('botaoCancelar').checked,
+          backgroundColor: document.getElementById('backgroundColor').value,
+          wizardCorPrimary: document.getElementById('wizardCorPrimary').value,
+          wizardCorTextCorpo: document.getElementById('wizardCorTextCorpo').value,
+          wizardCorTextTitle: document.getElementById('wizardCorTextTitle').value,
+          wizardCorTextButton: document.getElementById('wizardCorTextButton').value,
+          wizardButtonRadius: document.getElementById('wizardButtonRadius').value,
+          btnNormalColor: document.getElementById('btnNormalColor').value,
+          loadingTextColor: document.getElementById('loadingTextColor').value,
+          btnHighlightColor: document.getElementById('btnHighlightColor').value,
+          btnDisabledColor: document.getElementById('btnDisabledColor').value,
+          btnBorderColor: document.getElementById('btnBorderColor').value,
+          btnBorderWidth: document.getElementById('btnBorderWidth').value,
+          btnBorderRadius: document.getElementById('btnBorderRadius').value,
+          ovalStrokeColor: document.getElementById('ovalStrokeColor').value,
+          ovalProgressColor1: document.getElementById('ovalProgressColor1').value,
+          ovalProgressColor2: document.getElementById('ovalProgressColor2').value,
+          resultAnimationSuccessBackgroundColor: document.getElementById('resultAnimationSuccessBackgroundColor').value,
+          resultAnimationSuccessForegroundColor: document.getElementById('resultAnimationSuccessForegroundColor').value,
+          successBackgroundColor: document.getElementById('successBackgroundColor').value,
+          retryScreenHeaderTextColor: document.getElementById('retryScreenHeaderTextColor').value,
+          retryScreenSubtextTextColor: document.getElementById('retryScreenSubtextTextColor').value,
+          retryScreenImageBorderWidth: document.getElementById('retryScreenImageBorderWidth').value,
+          feedbackCustomizationBackgroundColor: document.getElementById('feedbackCustomizationBackgroundColor').value,
+          feedbackCustomizationTextColor: document.getElementById('feedbackCustomizationTextColor').value,
+          feedbackCustomizationCornerRadius: document.getElementById('feedbackCustomizationCornerRadius').value,
+          feedbackCustomizationShadow: document.getElementById('feedbackCustomizationShadow').value,
+          resultAnimationSuccessBackgroundImage: document.getElementById('resultAnimationSuccessBackgroundImage').value,
+          loadingBackgroundColor: document.getElementById('loadingBackgroundColor').value,
+          uploadProgressFillColor: document.getElementById('uploadProgressFillColor').value,
+          conexaoTimeout: document.getElementById('conexaoTimeout').value,
+          readyScreenHeaderTextColor: document.getElementById('readyScreenHeaderTextColor').value,
+          readyScreenSubtextColor: document.getElementById('readyScreenSubtextColor').value,
+        };
+
+        saveConfig(config);
+
+        alert('Configurações salvas!');
+        window.location.href = 'index.html'; // Redireciona para index.html
+      }
+    }
+
+    function clearConfigForm() {
+      localStorage.removeItem('config_facetec');
+      updateForm();
+    }
+
+    function updateForm() {
+      const config = loadConfig();
+      document.getElementById('wizard').checked = config.wizard;
+      document.getElementById('botaoCancelar').checked = config.botaoCancelar;
+      document.getElementById('backgroundColor').value = config.backgroundColor
+      document.getElementById('wizardCorPrimary').value = config.wizardCorPrimary
+      document.getElementById('wizardCorTextCorpo').value = config.wizardCorTextCorpo
+      document.getElementById('wizardCorTextTitle').value = config.wizardCorTextTitle
+      document.getElementById('wizardCorTextButton').value = config.wizardCorTextButton
+      document.getElementById('wizardButtonRadius').value = config.wizardButtonRadius
+      document.getElementById('btnNormalColor').value = config.btnNormalColor;
+      document.getElementById('loadingTextColor').value = config.loadingTextColor;
+      document.getElementById('btnHighlightColor').value = config.btnHighlightColor;
+      document.getElementById('btnDisabledColor').value = config.btnDisabledColor;
+      document.getElementById('btnBorderColor').value = config.btnBorderColor;
+      document.getElementById('btnBorderWidth').value = config.btnBorderWidth;
+      document.getElementById('btnBorderRadius').value = config.btnBorderRadius;
+      document.getElementById('ovalStrokeColor').value = config.ovalStrokeColor;
+      document.getElementById('ovalProgressColor1').value = config.ovalProgressColor1;
+      document.getElementById('ovalProgressColor2').value = config.ovalProgressColor2;
+      document.getElementById('resultAnimationSuccessBackgroundColor').value = config.resultAnimationSuccessBackgroundColor;
+      document.getElementById('resultAnimationSuccessForegroundColor').value = config.resultAnimationSuccessForegroundColor;
+      document.getElementById('successBackgroundColor').value = config.successBackgroundColor;
+      document.getElementById('retryScreenHeaderTextColor').value = config.retryScreenHeaderTextColor;
+      document.getElementById('retryScreenSubtextTextColor').value = config.retryScreenSubtextTextColor;
+      document.getElementById('retryScreenImageBorderWidth').value = config.retryScreenImageBorderWidth;
+      document.getElementById('feedbackCustomizationBackgroundColor').value = config.feedbackCustomizationBackgroundColor;
+      document.getElementById('feedbackCustomizationTextColor').value = config.feedbackCustomizationTextColor;
+      document.getElementById('feedbackCustomizationCornerRadius').value = config.feedbackCustomizationCornerRadius;
+      document.getElementById('feedbackCustomizationShadow').value = config.feedbackCustomizationShadow;
+      document.getElementById('resultAnimationSuccessBackgroundImage').value = config.resultAnimationSuccessBackgroundImage;
+      document.getElementById('loadingBackgroundColor').value = config.loadingBackgroundColor;
+      document.getElementById('uploadProgressFillColor').value = config.uploadProgressFillColor;
+      document.getElementById('conexaoTimeout').value = config.conexaoTimeout;
+      document.getElementById('readyScreenHeaderTextColor').value = config.readyScreenHeaderTextColor;
+      document.getElementById('readyScreenSubtextColor').value = config.readyScreenSubtextColor;
+
+    }
+
+    window.onload = function () {
+      updateForm();
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Configurações</h1>
+  <form onsubmit="saveConfigForm(); return false;">
+    <label for="wizard">Iniciar Wizard:</label>
+    <input type="checkbox" id="wizard" name="wizard"><br><br>
+
+    <label for="botaoCancelar">Botão cancelar:</label>
+    <input type="checkbox" id="botaoCancelar" name="botaoCancelar"><br><br>
+
+    <label for="wizardButtonRadius">wizardButtonRadius:</label>
+    <input type="text" id="wizardButtonRadius" name="wizardButtonRadius" value=""><br><br>
+
+    <label for="backgroundColor">backgroundColor:</label>
+    <input type="color" id="backgroundColor" name="backgroundColor" value="#fff"><br><br>
+
+    <label for="wizardCorPrimary">wizardCorPrimary:</label>
+    <input type="color" id="wizardCorPrimary" name="wizardCorPrimary" value="#fff"><br><br>
+
+    <label for="wizardCorTextCorpo">wizardCorTextCorpo:</label>
+    <input type="color" id="wizardCorTextCorpo" name="wizardCorTextCorpo" value="#fff"><br><br>
+
+    <label for="wizardCorTextTitle">wizardCorTextTitle:</label>
+    <input type="color" id="wizardCorTextTitle" name="wizardCorTextTitle" value="#fff"><br><br>
+
+    <label for="wizardCorTextButton">wizardCorTextButton:</label>
+    <input type="color" id="wizardCorTextButton" name="wizardCorTextButton" value="#fff"><br><br>
+
+    <label for="readyScreenHeaderTextColor">readyScreenHeaderTextColor:</label>
+    <input type="color" id="readyScreenHeaderTextColor" name="readyScreenHeaderTextColor" value="#585858"><br><br>
+
+    <label for="readyScreenSubtextColor">readyScreenSubtextColor:</label>
+    <input type="color" id="readyScreenSubtextColor" name="readyScreenSubtextColor" value="#585858"><br><br>
+
+    <label for="conexaoTimeout">conexaoTimeout:</label>
+    <input type="number" id="conexaoTimeout" name="conexaoTimeout" value="30000"><br><br>
+
+    <label for="resultAnimationSuccessBackgroundImage">resultAnimationSuccessBackgroundImage:</label>
+    <input type="text" id="resultAnimationSuccessBackgroundImage" name="resultAnimationSuccessBackgroundImage"
+      value=""><br><br>
+
+    <label for="loadingBackgroundColor">loadingBackgroundColor:</label>
+    <input type="color" id="loadingBackgroundColor" name="loadingBackgroundColor" value="#1d4f91"><br><br>
+
+    <label for="uploadProgressFillColor">uploadProgressFillColor:</label>
+    <input type="color" id="uploadProgressFillColor" name="uploadProgressFillColor" value="#375AD0"><br><br>
+
+    <label for="feedbackCustomizationBackgroundColor">feedbackCustomizationBackgroundColor:</label>
+    <input type="text" id="feedbackCustomizationBackgroundColor" name="feedbackCustomizationBackgroundColor"
+      value="rgba(45, 53, 73, 0.9)"><br><br>
+
+    <label for="feedbackCustomizationTextColor">feedbackCustomizationTextColor:</label>
+    <input type="color" id="feedbackCustomizationTextColor" name="feedbackCustomizationTextColor" value="#fff"><br><br>
+
+    <label for="feedbackCustomizationCornerRadius">feedbackCustomizationCornerRadius:</label>
+    <input type="text" id="feedbackCustomizationCornerRadius" name="feedbackCustomizationCornerRadius"
+      value="8px"><br><br>
+
+    <label for="feedbackCustomizationShadow">feedbackCustomizationShadow:</label>
+    <input type="text" id="feedbackCustomizationShadow" name="feedbackCustomizationShadow"
+      value="0px 6px 12px black"><br><br>
+
+    <label for="successBackgroundColor">successBackgroundColor:</label>
+    <input type="color" id="successBackgroundColor" name="successBackgroundColor" value="#09DEA1"><br><br>
+
+    <label for="retryScreenHeaderTextColor">retryScreenHeaderTextColor:</label>
+    <input type="color" id="retryScreenHeaderTextColor" name="retryScreenHeaderTextColor" value="#585858"><br><br>
+
+    <label for="retryScreenSubtextTextColor">retryScreenSubtextTextColor:</label>
+    <input type="color" id="retryScreenSubtextTextColor" name="retryScreenSubtextTextColor" value="#585858"><br><br>
+
+    <label for="retryScreenImageBorderWidth">retryScreenImageBorderWidth:</label>
+    <input type="text" id="retryScreenImageBorderWidth" name="retryScreenImageBorderWidth" value="2px"><br><br>
+
+    <label for="resultAnimationSuccessBackgroundColor">resultAnimationSuccessBackgroundColor:</label>
+    <input type="color" id="resultAnimationSuccessBackgroundColor" name="resultAnimationSuccessBackgroundColor"
+      value="#008000"><br><br>
+
+    <label for="resultAnimationSuccessForegroundColor">resultAnimationSuccessForegroundColor:</label>
+    <input type="color" id="resultAnimationSuccessForegroundColor" name="resultAnimationSuccessForegroundColor"
+      value="#fff"><br><br>
+
+    <label for="btnBorderColor">btnBorderColor:</label>
+    <input type="text" id="btnBorderColor" name="btnBorderColor" value="transparent"><br><br>
+
+    <label for="btnBorderWidth">btnBorderWidth:</label>
+    <input type="text" id="btnBorderWidth" name="btnBorderWidth" value="0px"><br><br>
+
+    <label for="btnBorderRadius">btnBorderRadius:</label>
+    <input type="text" id="btnBorderRadius" name="btnBorderRadius" value="20px"><br><br>
+
+    <label for="ovalStrokeColor">ovalStrokeColor:</label>
+    <input type="text" id="ovalStrokeColor" name="ovalStrokeColor" value="transparent"><br><br>
+
+    <label for="ovalProgressColor1">ovalProgressColor1:</label>
+    <input type="color" id="ovalProgressColor1" name="ovalProgressColor1" value="#1d4f91"><br><br>
+
+    <label for="ovalProgressColor2">ovalProgressColor2:</label>
+    <input type="color" id="ovalProgressColor2" name="ovalProgressColor2" value="#1d4f91"><br><br>
+
+    <label for="btnNormalColor">btnNormalColor:</label>
+    <input type="color" id="btnNormalColor" name="btnNormalColor" value="#002DD1"><br><br>
+
+    <label for="loadingTextColor">loadingTextColor:</label>
+    <input type="color" id="loadingTextColor" name="loadingTextColor" value="#585858"><br><br>
+
+    <label for="btnHighlightColor">btnHighlightColor:</label>
+    <input type="color" id="btnHighlightColor" name="btnHighlightColor" value="#1d4f91"><br><br>
+
+    <label for="btnDisabledColor">btnDisabledColor:</label>
+    <input type="color" id="btnDisabledColor" name="btnDisabledColor" value="#cccccc"><br><br>
+
+    <label for="imageUpload">Imagem Base64:</label>
+    <input type="file" id="imageUpload" name="imageUpload"><br><br>
+
+    <input type="submit" value="Salvar Configurações">
+    <input type="button" value="Limpar Configurações" class="button" id="clearButton" onclick="clearConfigForm()">
+  </form>
+</body>
+
+</html>
